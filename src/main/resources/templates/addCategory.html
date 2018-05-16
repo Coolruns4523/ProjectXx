@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymelaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/savecategory" th:object="${theCategory}" method="post">
+<input type="text" th:field="*{journalartistName}">
+<select th:field="*{journals}">
+    <option th:each="eachJournal:${alljournals}"  th:value="${eachJournal.id}" th:text="${eachJournal.artistName}"></option>
+</select>
+    <h1 th:text ="${person.firstName}+'\'s categories'"></h1>
+    <form th:action="@{/savecategories}" th:object="${journal}" method="post">
+        <input type="hidden" th:field="${person.id}">
+        <input type="hidden" th:field="${person.firstName}">
+        <div th:each="eachCategory:${categories}">
+            <input type="checkbox" th:field="${person.myCategories}" th:value="${eachCategory.id}" th:text ="${eachCategory.name}">
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</form>
+<button type="submit">Save</button>
+</form>
+</body>
+</html>

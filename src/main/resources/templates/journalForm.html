@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<form action="#" th:action = "@{/savejournal}" th:object="${aJournal}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    Artist Name:<input type="text" th:field="*{artistB=Name}"/>
+    <span th:if="${#fields.hasErrors('artistName')}"
+          th:errors="*{artistName}"></span>
+    Date:<input type="text" th:field="*{date}"/>
+    <span th:if="${#fields.hasErrors('date')}"
+          th:errors="*{date}"></span>
+    Photograph:<input type="text" th:field="*{image}"/>
+    <span th:if="${#fields.hasErrors('image')}"
+          th:errors="*{image}"></span>
+    Project Name<input type="text" th:field="*{projectName}"/>
+    <span th:if="${#fields.hasErrors('projectName')}"
+          th:errors="*{projectName}"></span>
+    Decription:<input type="text" th:field="*{description}"/>
+    <span th:if="${#fields.hasErrors('description')}"
+          th:errors="*{description}"></span>
+<form method="POST" action="/add" th:object="${actor}"
+      enctype="multipart/form-data">
+    <input type="file" name="file"/><br/><br/>
+
+
+</form>
+</form>
+</body>
+</html>
